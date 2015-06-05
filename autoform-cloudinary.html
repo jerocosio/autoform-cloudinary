@@ -1,0 +1,37 @@
+<template name="afCloudinary">
+  <input
+    type="text"
+    readonly="true"
+    value="{{filenames}}"/>
+  <button
+    type="button">
+    Browse
+  </button>
+  <input
+    name="file"
+    type="file"
+    class="cloudinary-fileupload"
+    data-cloudinary-field="image_id"
+    style="display: none;"/>
+  <input {{atts}} type="hidden" name="url" value="{{url}}"/>
+</template>
+
+<template name="afCloudinary_bootstrap3">
+  <input
+    type="text"
+    class="form-control"
+    readonly="true"
+    value="{{filenames}}"/>
+  <button
+    type="button"
+    class="btn btn-default">
+    Browse
+  </button>
+  <input
+    name="file"
+    type="file"
+    class="cloudinary-fileupload form-control"
+    data-cloudinary-field="image_id"
+    style="display: none"/>
+  <input {{atts}} type="hidden" name="url" value="{{url}}"/>
+</template>
