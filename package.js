@@ -18,6 +18,7 @@ Package.onUse(function (api) {
 
   api.addFiles([
     'autoform-cloudinary.html',
+    'autoform-cloudinary.css',
     'autoform-cloudinary.js'
   ], 'client');
 

@@ -18,7 +18,6 @@ var templates = ['afCloudinary', 'afCloudinary_bootstrap3'];
 _.each(templates, function (tmpl) {
   Template[tmpl].onCreated(function () {
     this.url = new ReactiveVar();
-    this.filenames = new ReactiveVar();
   });
 
   Template[tmpl].onRendered(function () {
@@ -36,13 +35,11 @@ _.each(templates, function (tmpl) {
 
     self.$('input[name=file]').on('fileuploaddone', function (e, data) {
       self.url.set(data.result.secure_url);
+      Tracker.flush();
     });
 
-    self.$('input[name=file]').on('fileuploadchange', function (e, data) {
-      var filenames = _.map(data.files, function (file) {
-        return file.name;
-      }).join(', ');
-      self.filenames.set(filenames);
+    self.$(self.firstNode).closest('form').on('reset', function () {
+      self.url.set(null);
     });
   });
 
@@ -51,14 +48,19 @@ _.each(templates, function (tmpl) {
       return Template.instance().url.get();
     },
 
-    filenames: function () {
-      return Template.instance().filenames.get();
+    accept: function () {
+      return this.atts.accept || 'image/*';
     }
   });
 
   Template[tmpl].events({
     'click button': function (e, t) {
       t.$('input[name=file]').click();
+    },
+
+    'click .js-remove': function (e, t) {
+      e.preventDefault();
+      t.url.set(null);
     }
   });
 });
