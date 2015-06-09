@@ -10,13 +10,13 @@ Package.onUse(function (api) {
     cloudinary: '1.2.1'
   });
   
-  api.versionsFrom( '1.0' );
+  api.versionsFrom('1.1.0.2');
 
   api.use([
     'templating',
     'reactive-var',
     'underscore',
-    'nekojira:cloudinary-jquery-upload',
+    'nekojira:cloudinary-jquery-upload@0.1.0',
     'aldeed:autoform@5.3.0'
   ], 'client');
 
