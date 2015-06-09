@@ -1,5 +1,6 @@
 Package.describe({
   name: 'autoform-cloudinary',
+  git: 'https://github.com/cosio55/autoform-cloudinary.git',
   version: '0.0.1'
 });
 
