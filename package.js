@@ -1,7 +1,7 @@
 Package.describe({
   name: 'cosio55:autoform-cloudinary',
   git: 'https://github.com/cosio55/autoform-cloudinary.git',
-  version: '0.1'
+  version: '0.0.1'
 });
 
 Package.onUse(function (api) {
