@@ -1,3 +1,8 @@
+About
+=====
+
+This package lets you use Cloudinary with autoform/simpleschema to easily upload an image to your Cloudinary account, and it automatically saves the url for the image using autoform.
+
 Usage
 =====
 
