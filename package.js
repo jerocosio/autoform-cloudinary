@@ -9,6 +9,8 @@ Package.onUse(function (api) {
   Npm.depends({
     cloudinary: '1.2.1'
   });
+  
+  api.versionsFrom( '1.0' );
 
   api.use([
     'templating',
