@@ -17,7 +17,19 @@ var templates = ['afCloudinary', 'afCloudinary_bootstrap3'];
 
 _.each(templates, function (tmpl) {
   Template[tmpl].onCreated(function () {
-    this.url = new ReactiveVar();
+    var self = this;
+
+    self.url = new ReactiveVar();
+
+    self.initialValueChecked = false;
+    self.checkInitialValue = function () {
+      Tracker.nonreactive(function () {
+        if (! self.initialValueChecked && ! self.url.get() && self.data.value) {
+          self.url.set(self.data.value);
+          self.initialValueChecked = true;
+        }
+      });
+    };
   });
 
   Template[tmpl].onRendered(function () {
@@ -45,7 +57,10 @@ _.each(templates, function (tmpl) {
 
   Template[tmpl].helpers({
     url: function () {
-      return Template.instance().url.get();
+      var t = Template.instance();
+
+      t.checkInitialValue();
+      return t.url.get();
     },
 
     accept: function () {
