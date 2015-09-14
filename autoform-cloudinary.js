@@ -10,9 +10,13 @@ Meteor.startup(function () {
   var cloudinaryURL = new URI(process.env.CLOUDINARY_URL);
 
   if (cloudinaryURL) {
-    $.cloudinary.config({
-      cloud_name: Meteor.settings.public.CLOUDINARY_CLOUD_NAME,
-      api_key: Meteor.settings.public.CLOUDINARY_API_KEY
+    Meteor.call('publicCredentials', function(err, res) {
+      if (!err) {
+        $.cloudinary.config({
+          cloud_name: res.cloudName,
+          api_key: res.apiKey
+        });
+      }
     });
   } else {
     $.cloudinary.config({

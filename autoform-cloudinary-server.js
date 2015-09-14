@@ -12,8 +12,22 @@ Meteor.methods({
       api_key: apiKey(),
       api_secret: apiSecret()
     });
+  },
+  publicCredentials: function() {
+    if (cloudinaryURL) {
+      return {
+        cloudName: apiHost(),
+        apiKey: apiKey()
+      }
+    }
   }
 });
+
+apiHost = function() {
+  if (cloudinaryURL) {
+    return cloudinaryURL.hostname();
+  }
+};
 
 apiKey = function () {
   if (cloudinaryURL) {
