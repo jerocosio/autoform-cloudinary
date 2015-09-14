@@ -7,23 +7,19 @@ AutoForm.addInputType('cloudinary', {
 });
 
 Meteor.startup(function () {
-  var cloudinaryURL = new URI(process.env.CLOUDINARY_URL);
-
-  if (cloudinaryURL) {
     Meteor.call('publicCredentials', function(err, res) {
-      if (!err) {
+      if (res) {
         $.cloudinary.config({
           cloud_name: res.cloudName,
           api_key: res.apiKey
         });
+      } else {
+        $.cloudinary.config({
+          cloud_name: Meteor.settings.public.CLOUDINARY_CLOUD_NAME,
+          api_key: Meteor.settings.public.CLOUDINARY_API_KEY
+        });
       }
     });
-  } else {
-    $.cloudinary.config({
-      cloud_name: cloudinaryURL.hostname(),
-      api_key: cloudinaryURL.username()
-    });
-  }
 });
 
 var templates = ['afCloudinary', 'afCloudinary_bootstrap3'];
