@@ -1,5 +1,8 @@
 var cloudinary = Npm.require('cloudinary');
-var cloudinaryURL = new URI(process.env.CLOUDINARY_URL);
+
+if (process.env.CLOUDINARY_URL) {
+  var cloudinaryURL = new URI(process.env.CLOUDINARY_URL);
+}
 
 Meteor.methods({
   afCloudinarySign: function (params) {
