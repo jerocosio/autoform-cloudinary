@@ -6,7 +6,7 @@ This package lets you use Cloudinary with autoform/simpleschema to easily upload
 Usage
 =====
 
-1. `meteor add autoform-cloudinary`
+1. `meteor add cosio55:autoform-cloudinary`
 
 2. Set up settings.json file
 
