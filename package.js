@@ -16,6 +16,7 @@ Package.onUse(function (api) {
     'templating',
     'reactive-var',
     'underscore',
+    'check',
     'nekojira:cloudinary-jquery-upload@0.1.0',
     'aldeed:autoform@5.3.0'
   ], 'client');
